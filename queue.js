@@ -55,3 +55,5 @@ function runWhileLoopForNSeconds(sec){
 
     console.log('end...' + new Date().getSeconds())
 })()
+
+// https://medium.com/front-end-weekly/javascript-event-loop-explained-4cd26af121d4
