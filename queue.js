@@ -27,3 +27,31 @@ function test() {
 })()
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
+// queue deep
+
+const callback1 = () => {
+    console.log("callback1...time = " + new Date().getSeconds())
+}
+const callback2 = () => {
+    console.log("callback2...time = " + new Date().getSeconds())
+    runWhileLoopForNSeconds(2)
+}
+
+function runWhileLoopForNSeconds(sec){
+    let start = Date.now(), now = start;
+    while (now - start < (sec*1000)) {
+        now = Date.now();
+    }
+}
+
+(function(){
+    console.log('start...' + new Date().getSeconds())
+
+    setTimeout(callback1, 1000)
+
+    setTimeout(callback2, 5000)
+
+    runWhileLoopForNSeconds(2)
+
+    console.log('end...' + new Date().getSeconds())
+})()
