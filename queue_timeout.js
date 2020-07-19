@@ -12,6 +12,9 @@ const callback2 = () => {
 
     setTimeout(callback1, 1000)
 
+    let x = Date.now()
+    while(Date.now() - x < 5000){}
+
     setTimeout(callback2, 5000)
 
 
